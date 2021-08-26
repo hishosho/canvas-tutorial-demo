@@ -22,6 +22,10 @@
     function draw () {
       clear()
       ball.draw()
+
+      // 第三步，逐帧减少垂直方向的速度，所以小球最终将只会在地板上弹跳
+      ball.vy *= .99
+      ball.vy += .25
       
       // 第二步，给球位移增加边界，到达边界后反向移动
       if (ball.x + ball.vx > canvas.width || ball.x + ball.vx < 0) {
@@ -30,10 +34,6 @@
       if (ball.y + ball.vy > canvas.height || ball.y + ball.vy < 0) {
         ball.vy = -ball.vy
       }
-
-      // 第三步，逐帧减少垂直方向的速度，所以小球最终将只会在地板上弹跳
-      ball.vy *= .99
-      ball.vy += .25
 
       // 第一步，给球添加位移动画，但是没有边界，会超出画布
       ball.x += ball.vx
